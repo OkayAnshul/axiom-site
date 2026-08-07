@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Axiom</title>
+<meta name="description" content="Axiom's privacy policy. No account, no server, no telemetry. Your journal stays on your device.">
+<meta name="theme-color" content="#FCF8F1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D0C0B" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'><rect width='108' height='108' rx='24' fill='%230D0C0B'/><path d='M54 24C54 24 69 41 69 51.5C69 59.8 62.3 66.5 54 66.5C45.7 66.5 39 59.8 39 51.5C39 41 54 24 54 24Z' fill='%23DD9A55'/></svg>">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="26" height="26" viewBox="0 0 108 108" aria-hidden="true">
+        <path d="M54,24C54,24 69,41 69,51.5C69,59.8 62.3,66.5 54,66.5C45.7,66.5 39,59.8 39,51.5C39,41 54,24 54,24Z" fill="var(--accent)"/>
+        <path d="M26,69.5C35,68.1 46,69.7 53,73.5L53,84C46,80.2 35,78.6 26,80Z" fill="var(--ink-faint)"/>
+        <path d="M82,69.5C73,68.1 62,69.7 55,73.5L55,84C62,80.2 73,78.6 82,80Z" fill="var(--ink-faint)" opacity=".65"/>
+      </svg>
+      Axiom
+    </div>
+    <nav class="site"><a href="index.html">← Back</a></nav>
+  </div>
+</header>
+
+<main class="wrap doc">
+
+<h1>Privacy Policy</h1>
+<p class="updated">Last updated: 7 August 2026</p>
+
+<p>
+  Axiom is a personal journalling app for Android, published by Cosmic Laboratory
+  (<code>com.cosmiclaboratory.axiom</code>). This policy describes exactly what the app does with
+  your data.
+</p>
+
+<div class="callout">
+  <p>
+    <strong>The short version.</strong> Axiom has no server. There is no account to create,
+    nothing is uploaded, and nothing is collected about you. The only time any of your writing
+    leaves your phone is when you have supplied your own AI provider key and you have triggered a
+    request that needs it.
+  </p>
+</div>
+
+<h2>1. What Axiom stores, and where</h2>
+<p>Everything Axiom keeps lives in a private database on your device, inside the app's own storage, which other apps cannot read:</p>
+<ul>
+  <li>Journal entries, titles, tags, timestamps and word counts</li>
+  <li>Moods and named feelings, whether you chose them or the app inferred them</li>
+  <li>Conversations with the companion</li>
+  <li>The memory store — facts, people, goals, preferences and open loops</li>
+  <li>Your display name and the companion's name, if you set them</li>
+  <li>Your settings: theme, voice, check-in time, retention window, chosen AI provider</li>
+</ul>
+<p>
+  <strong>We do not collect any of it.</strong> There is no analytics SDK, no crash reporting
+  service, no advertising identifier, no tracking of any kind, and no third-party libraries that
+  phone home.
+</p>
+
+<h2>2. When data leaves your device</h2>
+<p>
+  AI features are <strong>off until you turn them on</strong>, and turning them on means pasting
+  in an API key for an account you already own at either Groq or Google (Gemini).
+</p>
+<p>
+  Once a key is present, and <strong>only</strong> for an action you take, Axiom sends the
+  relevant text directly from your phone to that provider over HTTPS. Nothing is routed through
+  any server of ours, because there isn't one. Requests are made for:
+</p>
+
+<div class="table-scroll">
+<table>
+  <thead><tr><th>Action</th><th>What is sent</th></tr></thead>
+  <tbody>
+    <tr><td>Sending a message to the companion</td><td>Your message, recent conversation, the strongest memories, and a relevant excerpt of your journal</td></tr>
+    <tr><td>Turning a conversation into a journal entry</td><td>That conversation</td></tr>
+    <tr><td>Extracting memories</td><td>The conversation or entry being processed</td></tr>
+    <tr><td>Daily openers and check-in lines</td><td>A short summary of recent context</td></tr>
+    <tr><td>Voice transcription (fallback only — see §4)</td><td>The audio recording</td></tr>
+    <tr><td>Testing your key from Settings</td><td>A short fixed test string</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>
+  Your use of Groq or Gemini is governed by <strong>your</strong> agreement with that provider,
+  under your own account. Their handling of what you send is subject to their policies:
+</p>
+<ul>
+  <li>Groq — <a href="https://groq.com/privacy-policy/" rel="noopener">groq.com/privacy-policy</a></li>
+  <li>Google Gemini API — <a href="https://ai.google.dev/gemini-api/terms" rel="noopener">ai.google.dev/gemini-api/terms</a></li>
+</ul>
+
+<p>
+  <strong>If you never add a key, Axiom makes no network requests at all.</strong> Journalling,
+  search, the calendar, mood tracking, patterns, streaks, widgets, backup and the crisis resources
+  all work entirely offline.
+</p>
+
+<h2>3. Your API keys</h2>
+<p>
+  Keys are stored in <code>EncryptedSharedPreferences</code>, encrypted with a master key held in
+  the Android Keystore — on devices with secure hardware, that key never leaves the secure
+  element. Keys are deliberately excluded from Android's automatic cloud backup and from
+  device-to-device transfer, so they cannot be extracted from a backup. You can delete a key at
+  any time in <strong>Settings → AI</strong>, and it is removed immediately.
+</p>
+
+<h2>4. Microphone</h2>
+<p>
+  Axiom requests <code>RECORD_AUDIO</code> so you can dictate entries instead of typing. It is
+  used only while you are actively recording a voice note, never in the background.
+</p>
+<p>
+  Transcription prefers Android's <strong>on-device</strong> <code>SpeechRecognizer</code>, which
+  needs no network and no key. Only if on-device recognition is unavailable for your language —
+  and only if you have both enabled the fallback and supplied a Groq key — is the recording sent
+  to Groq's Whisper endpoint for transcription. Recordings are not retained after transcription
+  and are never uploaded anywhere else.
+</p>
+
+<h2>5. Notifications</h2>
+<p>
+  <code>POST_NOTIFICATIONS</code> is used for optional daily check-ins and companion messages.
+  Notification content is composed on your device. You can turn check-ins off in Settings, or deny
+  the permission entirely — the rest of the app is unaffected.
+</p>
+
+<h2>6. Backups</h2>
+<p>
+  Axiom includes an encrypted whole-journal export you control: you choose when to create the file
+  and where it goes.
+</p>
+<p>
+  Android's <em>automatic</em> cloud backup is deliberately limited to your settings only. Your
+  journal database and your API keys are excluded from it — the database because a partially
+  captured database is worse than none, and the keys because they cannot be decrypted on a
+  different device. Use the in-app export to move your journal.
+</p>
+
+<h2>7. Crisis resources</h2>
+<p>
+  If you write something that plainly states an intent to harm yourself, Axiom shows Indian mental
+  health helplines (Tele-MANAS, AASRA, iCall). This detection is plain text matching that runs
+  <strong>entirely on your device</strong> — no model, no network, and no key. Nothing about it is
+  recorded, transmitted, or reported to anyone.
+</p>
+<p>Axiom is not a medical device and is not a substitute for professional care.</p>
+
+<h2>8. Children</h2>
+<p>Axiom is not directed at children and is intended for users aged 18 and over.</p>
+
+<h2>9. Your control</h2>
+<ul>
+  <li><strong>Delete an entry, a conversation or a memory</strong> — removed from the database immediately.</li>
+  <li><strong>Delete everything</strong> — uninstalling the app removes the database with it.</li>
+  <li><strong>Export everything</strong> — Settings → Backup produces an encrypted file you own.</li>
+  <li><strong>Turn AI off</strong> — remove your key; the app keeps working without it.</li>
+</ul>
+
+<h2>10. Changes</h2>
+<p>
+  Material changes to this policy will be reflected here, with an updated date at the top, before
+  they take effect in a released version.
+</p>
+
+<h2>11. Contact</h2>
+<p>Questions about this policy: <a href="mailto:23052062@kiit.ac.in">23052062@kiit.ac.in</a></p>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>Axiom — built by Anshul</span>
+    <span><a href="index.html">Home</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

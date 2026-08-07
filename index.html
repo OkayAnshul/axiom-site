@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Axiom — a journal that remembers you</title>
+<meta name="description" content="An Android journal built around a companion you can talk to. It notices what keeps coming up, and everything stays on your phone.">
+<meta name="theme-color" content="#FCF8F1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D0C0B" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Axiom — a journal that remembers you">
+<meta property="og:description" content="An Android journal built around a companion you can talk to. Everything stays on your phone.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'><rect width='108' height='108' rx='24' fill='%230D0C0B'/><path d='M54 24C54 24 69 41 69 51.5C69 59.8 62.3 66.5 54 66.5C45.7 66.5 39 59.8 39 51.5C39 41 54 24 54 24Z' fill='%23DD9A55'/></svg>">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="26" height="26" viewBox="0 0 108 108" aria-hidden="true">
+        <path d="M54,24C54,24 69,41 69,51.5C69,59.8 62.3,66.5 54,66.5C45.7,66.5 39,59.8 39,51.5C39,41 54,24 54,24Z" fill="var(--accent)"/>
+        <path d="M26,69.5C35,68.1 46,69.7 53,73.5L53,84C46,80.2 35,78.6 26,80Z" fill="var(--ink-faint)"/>
+        <path d="M82,69.5C73,68.1 62,69.7 55,73.5L55,84C62,80.2 73,78.6 82,80Z" fill="var(--ink-faint)" opacity=".65"/>
+      </svg>
+      Axiom
+    </div>
+    <nav class="site">
+      <a href="#screens">Screens</a>
+      <a href="#features">Features</a>
+      <a href="#engineering">Engineering</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>A journal that remembers you</h1>
+    <p class="lead">
+      The home screen is a conversation, not a blank page. Talk about your day and Axiom
+      writes it up, notices what keeps coming back, and asks how the thing on Tuesday went.
+      All of it on your phone.
+    </p>
+    <div class="pills">
+      <span class="pill">No account</span>
+      <span class="pill">No upload</span>
+      <span class="pill">Works offline</span>
+      <span class="pill">Bring your own API key</span>
+      <span class="pill">Android 8.0+</span>
+    </div>
+  </div>
+</section>
+
+<section id="screens" style="padding-top:0">
+  <div class="wrap">
+    <div class="rail">
+      <figure>
+        <div class="phone"><img src="assets/shots/light/01-companion.png" alt="A conversation with the companion, which references an earlier journal entry" loading="lazy"></div>
+        <figcaption>It remembers what you wrote weeks ago, and brings it up when it matters.</figcaption>
+      </figure>
+      <figure>
+        <div class="phone"><img src="assets/shots/light/02-journal.png" alt="The journal timeline grouped by day with mood indicators" loading="lazy"></div>
+        <figcaption>Everything you've kept, by the day it happened.</figcaption>
+      </figure>
+      <figure>
+        <div class="phone"><img src="assets/shots/light/03c-patterns-charts.png" alt="Patterns screen showing a writing streak, mood sparkline and dominant emotions" loading="lazy"></div>
+        <figcaption>Streaks, mood over time, and the feelings that came up most.</figcaption>
+      </figure>
+      <figure>
+        <div class="phone"><img src="assets/shots/light/07-memory.png" alt="What I remember screen listing memories with provenance and edit controls" loading="lazy"></div>
+        <figcaption>Every memory is visible, editable, and yours to delete.</figcaption>
+      </figure>
+      <figure>
+        <div class="phone"><img src="assets/shots/light/09-search.png" alt="Search results with matched terms highlighted" loading="lazy"></div>
+        <figcaption>Full-text and meaning-based search across everything.</figcaption>
+      </figure>
+      <figure>
+        <div class="phone"><img src="assets/shots/dark/01-companion.png" alt="The companion conversation in dark mode" loading="lazy"></div>
+        <figcaption>Read at night without being shouted at.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <h2>What it does</h2>
+    <p class="section-lead">
+      Journalling apps usually fail the same way: a blank page is intimidating, and there is no
+      reason to come back tomorrow. Axiom starts a conversation instead.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <span class="tag">Talk</span>
+        <h3>Say it, don't compose it</h3>
+        <p>Tell the companion how the day went. When you're done, the conversation is digested
+          into a proper journal entry in your own voice and filed for you.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Memory</span>
+        <h3>It remembers, and shows its working</h3>
+        <p>People, facts, goals and preferences are kept in a list you can read line by line —
+          each with where it came from and how often it's come up. Edit or delete any of it.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Open loops</span>
+        <h3>It follows up. Once.</h3>
+        <p>Mention an interview on Tuesday and it asks how it went on Wednesday. Then it lets
+          the subject drop, because a companion that nags is one you stop talking to.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Patterns</span>
+        <h3>Noticed, not diagnosed</h3>
+        <p>Which weekday runs hardest, whether this week reads lighter than last, which people
+          your better days cluster around. Worked out on the device, and it stays quiet when
+          there isn't enough to say.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Voice</span>
+        <h3>Speak, in your own languages</h3>
+        <p>Dictate entries with on-device recognition. Hindi and Hinglish are first-class, not
+          an afterthought — including in search.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Everywhere</span>
+        <h3>Widgets, tiles, and a way out</h3>
+        <p>Home-screen widgets, a Quick Settings tile for a thought you'll lose otherwise, and
+          an encrypted export of the whole journal that you control.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Your journal stays on your phone</h2>
+    <p>
+      There is no account, no server and no telemetry. Nothing is uploaded, because there is
+      nowhere to upload it to. Mood tracking, patterns, search, streaks and the crisis resources
+      all work with the network switched off entirely.
+    </p>
+    <p>
+      AI features are optional and run on an API key <em>you</em> supply, for an account
+      <em>you</em> own. Only then, and only for something you asked for, does any text leave the
+      device — and it goes straight to that provider, never through us. Keys are encrypted with a
+      key held in the Android Keystore.
+    </p>
+    <p><a href="privacy.html">Read the full privacy policy →</a></p>
+  </div>
+</section>
+
+<section id="engineering">
+  <div class="wrap">
+    <h2>Under the hood</h2>
+    <p class="section-lead">
+      Axiom is a single-module Android app in Kotlin, built with a constraint that shaped
+      everything: no server, and most people won't have an API key. So the interesting work is
+      in what runs on the device.
+    </p>
+
+    <div class="stats">
+      <div class="stat"><b>32k</b><span>lines of Kotlin</span></div>
+      <div class="stat"><b>227</b><span>source files</span></div>
+      <div class="stat"><b>v12</b><span>Room schema</span></div>
+      <div class="stat"><b>5</b><span>hand-written migrations</span></div>
+      <div class="stat"><b>33</b><span>unit test files</span></div>
+      <div class="stat"><b>0</b><span>trackers</span></div>
+    </div>
+
+    <div class="eng">
+      <article>
+        <h3>Mood classification without a model file</h3>
+        <p>Multinomial naive Bayes trained on your own labelled entries, on your own device. It
+          trains in milliseconds on a few dozen examples and needs no network.</p>
+        <p>Because it learns <em>your</em> vocabulary rather than a pretrained one, Hindi,
+          Hinglish and private shorthand work for free. A general sentiment model knows what
+          "terrible" means; this one learns what your bad days sound like.</p>
+      </article>
+
+      <article>
+        <h3>Semantic search without embeddings</h3>
+        <p>Full-text search answers "which entries contain these words". It can't answer the
+          question people actually ask a journal — <em>when did I feel like this before?</em> —
+          because today's words aren't the words you used then.</p>
+        <p>TF-IDF with co-occurrence query expansion scores whole-document similarity instead. A
+          bundled sentence encoder would cost 30–100&nbsp;MB, cold-start slowly, and be weakest
+          exactly where this app can't afford to be: code-mixed writing.</p>
+      </article>
+
+      <article>
+        <h3>Migrations that repair data, not just schema</h3>
+        <p>Five hand-written Room migrations from a fixed baseline. Two of them fix <em>data</em>:
+          one nulls a field that had been recording the wrong value, choosing honesty over false
+          precision; one deletes junk memories that a bug had been feeding to the model as facts
+          about the user.</p>
+        <p>That second one carries a frozen copy of the stop list rather than referencing the live
+          one — a migration has to produce the same result on every device forever.</p>
+      </article>
+
+      <article>
+        <h3>Statistics that know when to be quiet</h3>
+        <p>Every pattern has a threshold below which it says nothing: three samples for a weekday
+          claim, three days in each window for a trend, a mood gap of 0.6 before a difference is
+          worth mentioning.</p>
+        <p>An app that tells you what it noticed after four entries is guessing, and you'll learn
+          to distrust it. Silence is a feature.</p>
+      </article>
+
+      <article>
+        <h3>Type-safe navigation</h3>
+        <p>Destinations are <code>@Serializable</code> Kotlin types, not strings. The old string
+          routes shipped a real bug — a screen was renamed and one navigation target kept pointing
+          at a route that no longer existed, silently, because both halves were strings.</p>
+        <p>The fix wasn't the rename. It was removing the category of bug.</p>
+      </article>
+
+      <article>
+        <h3>Crisis detection that cannot fail</h3>
+        <p>Plainly-stated distress is matched on-device with no model, no network and no key —
+          because someone in crisis at 3am without an API key configured is exactly the person who
+          must not hit a dead end.</p>
+        <p>It's tuned for precision over recall on purpose. Wrongly telling someone having a bad
+          Tuesday that you think they're in danger teaches them the app over-reacts, and then they
+          stop telling it things.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>Axiom — built by Anshul</span>
+    <span><a href="privacy.html">Privacy</a> · <a href="mailto:23052062@kiit.ac.in">Contact</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
