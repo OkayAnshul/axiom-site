@@ -47,7 +47,17 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+/* `clip` rather than `hidden`: overflow-x:hidden on html/body makes it a scroll
+   container, which is what breaks position:sticky headers in several browsers.
+   `clip` prevents sideways overflow without creating one. */
+html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+}
 
 body {
     margin: 0;
@@ -57,7 +67,6 @@ body {
     font-size: 18px;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
 }
 
 .ui {
@@ -157,26 +166,26 @@ nav.site a:hover { color: var(--accent); }
     white-space: nowrap;
 }
 
-/* ---- phone rail ------------------------------------------------------ */
+/* ---- screenshots ------------------------------------------------------
 
-.rail {
-    display: flex;
-    gap: 1.25rem;
-    overflow-x: auto;
-    padding: 2.5rem .25rem 3rem;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: thin;
-}
+   A wrapping grid, not a horizontal scroller. A scroll rail needs shift+wheel
+   on a mouse and shows no scrollbar at all on systems with overlay scrollbars,
+   so it reads as broken even when it works. Wrapping needs no gesture anyone
+   has to know about, and it keyboard-tabs and screen-reads correctly for free. */
 
-.rail figure {
+.shots {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 1.6rem 1.25rem;
+    padding: 2.5rem 0 1rem;
+    list-style: none;
     margin: 0;
-    flex: 0 0 auto;
-    width: 236px;
-    scroll-snap-align: center;
 }
+
+.shots figure { margin: 0; }
 
 .phone {
-    border-radius: 26px;
+    border-radius: 22px;
     border: 1px solid var(--hairline);
     box-shadow: var(--shadow);
     overflow: hidden;
@@ -191,14 +200,68 @@ nav.site a:hover { color: var(--accent); }
     object-fit: cover;
 }
 
-.rail figcaption {
+.shots figcaption {
     font-family: ui-sans-serif, system-ui, sans-serif;
-    font-size: .84rem;
+    font-size: .82rem;
+    line-height: 1.45;
     color: var(--ink-faint);
     text-align: center;
     margin-top: .7rem;
-    padding-inline: .4rem;
 }
+
+/* Tap or click to enlarge. Progressive enhancement: with JS off this is a
+   plain button that does nothing, and the grid is still perfectly readable. */
+.shots button {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: zoom-in;
+    border-radius: 22px;
+}
+
+.shots button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+@media (hover: hover) {
+    .shots button { transition: transform .18s ease; }
+    .shots button:hover { transform: translateY(-3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .shots button { transition: none; }
+    .shots button:hover { transform: none; }
+}
+
+/* ---- lightbox --------------------------------------------------------- */
+
+#zoom {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: none;
+    place-items: center;
+    padding: 2rem 1rem;
+    background: color-mix(in srgb, #0D0C0B 88%, transparent);
+    backdrop-filter: blur(6px);
+    cursor: zoom-out;
+    border: 0;
+}
+
+#zoom[open] { display: grid; }
+
+#zoom img {
+    max-width: min(420px, 92vw);
+    max-height: 88vh;
+    width: auto;
+    border-radius: 22px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+}
+
+#zoom::backdrop { background: transparent; }
 
 /* ---- sections -------------------------------------------------------- */
 

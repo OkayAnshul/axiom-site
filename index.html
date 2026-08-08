@@ -56,29 +56,37 @@
 
 <section id="screens" style="padding-top:0">
   <div class="wrap">
-    <div class="rail">
+    <div class="shots">
       <figure>
-        <div class="phone"><img src="assets/shots/light/01-companion.png" alt="A conversation with the companion, which references an earlier journal entry" loading="lazy"></div>
+        <button type="button"><span class="phone"><img src="assets/shots/light/01-companion.png" alt="A conversation with the companion, which references an earlier journal entry" loading="lazy" width="1080" height="2400"></span></button>
         <figcaption>It remembers what you wrote weeks ago, and brings it up when it matters.</figcaption>
       </figure>
       <figure>
-        <div class="phone"><img src="assets/shots/light/02-journal.png" alt="The journal timeline grouped by day with mood indicators" loading="lazy"></div>
+        <button type="button"><span class="phone"><img src="assets/shots/light/02-journal.png" alt="The journal timeline grouped by day with mood indicators" loading="lazy" width="1080" height="2400"></span></button>
         <figcaption>Everything you've kept, by the day it happened.</figcaption>
       </figure>
       <figure>
-        <div class="phone"><img src="assets/shots/light/03c-patterns-charts.png" alt="Patterns screen showing a writing streak, mood sparkline and dominant emotions" loading="lazy"></div>
+        <button type="button"><span class="phone"><img src="assets/shots/light/03c-patterns-charts.png" alt="Patterns screen showing a writing streak, mood sparkline and dominant emotions" loading="lazy" width="1080" height="2400"></span></button>
         <figcaption>Streaks, mood over time, and the feelings that came up most.</figcaption>
       </figure>
       <figure>
-        <div class="phone"><img src="assets/shots/light/07-memory.png" alt="What I remember screen listing memories with provenance and edit controls" loading="lazy"></div>
+        <button type="button"><span class="phone"><img src="assets/shots/light/07-memory.png" alt="What I remember screen listing memories with provenance and edit controls" loading="lazy" width="1080" height="2400"></span></button>
         <figcaption>Every memory is visible, editable, and yours to delete.</figcaption>
       </figure>
       <figure>
-        <div class="phone"><img src="assets/shots/light/09-search.png" alt="Search results with matched terms highlighted" loading="lazy"></div>
+        <button type="button"><span class="phone"><img src="assets/shots/light/09-search.png" alt="Search results with matched terms highlighted" loading="lazy" width="1080" height="2400"></span></button>
         <figcaption>Full-text and meaning-based search across everything.</figcaption>
       </figure>
       <figure>
-        <div class="phone"><img src="assets/shots/dark/01-companion.png" alt="The companion conversation in dark mode" loading="lazy"></div>
+        <button type="button"><span class="phone"><img src="assets/shots/light/10-calendar.png" alt="A month calendar showing which days were written on" loading="lazy" width="1080" height="2400"></span></button>
+        <figcaption>A month at a glance, and every day you showed up.</figcaption>
+      </figure>
+      <figure>
+        <button type="button"><span class="phone"><img src="assets/shots/light/04-settings-ai.png" alt="AI settings explaining that the journal stays on the device" loading="lazy" width="1080" height="2400"></span></button>
+        <figcaption>AI is optional, and runs on a key you own.</figcaption>
+      </figure>
+      <figure>
+        <button type="button"><span class="phone"><img src="assets/shots/dark/01-companion.png" alt="The companion conversation in dark mode" loading="lazy" width="1080" height="2400"></span></button>
         <figcaption>Read at night without being shouted at.</figcaption>
       </figure>
     </div>
@@ -235,10 +243,37 @@
 
 <footer class="site">
   <div class="wrap">
-    <span>Axiom — built by Anshul</span>
-    <span><a href="privacy.html">Privacy</a> · <a href="mailto:23052062@kiit.ac.in">Contact</a></span>
+    <span>Axiom — by Anshul</span>
+    <span><a href="privacy.html">Privacy</a> · <a href="mailto:anshulisokay@gmail.com">Contact</a></span>
   </div>
 </footer>
+
+<!-- Click-to-enlarge. Native <dialog> so Escape, focus trapping and the
+     backdrop all come from the platform rather than from hand-written JS. -->
+<dialog id="zoom" aria-label="Enlarged screenshot">
+  <img alt="">
+</dialog>
+
+<script>
+(function () {
+  var dlg = document.getElementById('zoom');
+  var full = dlg.querySelector('img');
+  if (!dlg.showModal) return;   // No dialog support: grid still works, buttons are inert.
+
+  document.querySelectorAll('.shots button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var img = btn.querySelector('img');
+      full.src = img.currentSrc || img.src;
+      full.alt = img.alt;
+      dlg.showModal();
+    });
+  });
+
+  // Clicking anywhere — including the image — closes it, matching cursor: zoom-out.
+  dlg.addEventListener('click', function () { dlg.close(); });
+  dlg.addEventListener('close', function () { full.removeAttribute('src'); });
+})();
+</script>
 
 </body>
 </html>
