@@ -173,13 +173,27 @@ nav.site a:hover { color: var(--accent); }
    so it reads as broken even when it works. Wrapping needs no gesture anyone
    has to know about, and it keyboard-tabs and screen-reads correctly for free. */
 
+/* Explicit column counts rather than auto-fill. With eight items the count is
+   known, and auto-fill with a 170px floor collapses to a single column on a
+   375px phone — eight full-width screenshots is an endless section. These
+   breakpoints give 2 / 3 / 4, so the last row is never a lone orphan. */
 .shots {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-    gap: 1.6rem 1.25rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem 1rem;
     padding: 2.5rem 0 1rem;
-    list-style: none;
     margin: 0;
+}
+
+@media (min-width: 620px) {
+    .shots {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.8rem 1.25rem;
+    }
+}
+
+@media (min-width: 900px) {
+    .shots { grid-template-columns: repeat(4, 1fr); }
 }
 
 .shots figure { margin: 0; }
