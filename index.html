@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Axiom — a journal that remembers you</title>
-<meta name="description" content="An Android journal built around a companion you can talk to. It notices what keeps coming up, and everything stays on your phone.">
+<meta name="description" content="An Android journal built around an AI companion you can talk to — Groq and Gemini routed per task, on a key you own, with everything stored on your phone.">
 <meta name="theme-color" content="#FCF8F1" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0D0C0B" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="Axiom — a journal that remembers you">
-<meta property="og:description" content="An Android journal built around a companion you can talk to. Everything stays on your phone.">
+<meta property="og:description" content="An Android journal built around an AI companion you can talk to. Your key, your account, everything stored on your phone.">
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 108 108'><rect width='108' height='108' rx='24' fill='%230D0C0B'/><path d='M54 24C54 24 69 41 69 51.5C69 59.8 62.3 66.5 54 66.5C45.7 66.5 39 59.8 39 51.5C39 41 54 24 54 24Z' fill='%23DD9A55'/></svg>">
@@ -26,6 +26,7 @@
       Axiom
     </div>
     <nav class="site">
+      <a href="#ai">AI</a>
       <a href="#screens">Screens</a>
       <a href="#features">Features</a>
       <a href="#engineering">Engineering</a>
@@ -40,16 +41,90 @@
   <div class="wrap">
     <h1>A journal that remembers you</h1>
     <p class="lead">
-      The home screen is a conversation, not a blank page. Talk about your day and Axiom
-      writes it up, notices what keeps coming back, and asks how the thing on Tuesday went.
-      All of it on your phone.
+      The home screen is a conversation, not a blank page. A language model listens, writes the
+      day up in your own voice, and keeps track of what matters — then hands everything it can't
+      justify sending anywhere back to the phone.
     </p>
     <div class="pills">
-      <span class="pill">No account</span>
-      <span class="pill">No upload</span>
-      <span class="pill">Works offline</span>
-      <span class="pill">Bring your own API key</span>
+      <span class="pill">Groq + Gemini</span>
+      <span class="pill">Streaming</span>
+      <span class="pill">Your key, your account</span>
+      <span class="pill">No account, no upload</span>
       <span class="pill">Android 8.0+</span>
+    </div>
+  </div>
+</section>
+
+<section id="ai">
+  <div class="wrap">
+    <h2>The AI, and where it runs</h2>
+    <p class="section-lead">
+      Axiom is built around a language model, and that is the hard part of the app. Not the
+      call — anyone can post a prompt to an endpoint — but everything around it: which model
+      answers, what it is allowed to know, how a rambling conversation becomes an entry worth
+      keeping, and what still works when there is no key at all.
+    </p>
+
+    <div class="stats">
+      <div class="stat"><b>2</b><span>providers, one interface</span></div>
+      <div class="stat"><b>per-task</b><span>model selection</span></div>
+      <div class="stat"><b>streamed</b><span>token by token</span></div>
+      <div class="stat"><b>0</b><span>keys of ours involved</span></div>
+    </div>
+
+    <div class="eng">
+      <article>
+        <h3>Two providers, chosen at call time</h3>
+        <p>Groq and Gemini sit behind a single interface, routed per request rather than picked
+          once in settings. Each task names the model it wants: the fast cheap one classifies and
+          extracts, the stronger one writes prose a person will actually read.</p>
+        <p>Sending every job to the best available model is the expensive way to be lazy. Most
+          calls in this app don't need to be clever — they need to be right and quick.</p>
+      </article>
+
+      <article>
+        <h3>A conversation is not a journal entry</h3>
+        <p>The digester takes a finished session and writes it up in the user's own register —
+          their words, their shorthand — instead of summarising it in the model's. Get this wrong
+          and the entry reads like a customer service email about your own day.</p>
+        <p>It runs when you leave the conversation, not on a button, because asking someone to
+          decide their day is over is asking them to do the app's job.</p>
+      </article>
+
+      <article>
+        <h3>What the model is actually told</h3>
+        <p>The prompt is assembled from the memory store, and for a while it was assembled badly
+          — pronouns, fragments and half-sentences were being passed to the model as established
+          facts about the user, which is how a companion starts saying strange things.</p>
+        <p>Two fixes: a stop list so junk never enters the store, and a debug surface that shows
+          the exact text the model received. Most prompt bugs are invisible until you look at the
+          prompt.</p>
+      </article>
+
+      <article>
+        <h3>Memory, with provenance on every line</h3>
+        <p>Facts, people, goals, preferences and open loops are extracted from what you say and
+          consolidated so the same thing said five ways doesn't become five memories. Every item
+          shows when it was noticed and how often it has come up.</p>
+        <p>A companion that claims to remember you but can't show its working is a chatbot with
+          extra steps. All of it is editable, and all of it is deletable.</p>
+      </article>
+
+      <article>
+        <h3>It degrades instead of breaking</h3>
+        <p>With no key configured there is still a journal: a local digester writes entries, mood
+          classification, patterns, search and crisis detection all run on-device, and nothing
+          asks you to sign up for anything.</p>
+        <p>The model makes Axiom better. It was never allowed to make it a requirement.</p>
+      </article>
+
+      <article>
+        <h3>Keys you own, encrypted at rest</h3>
+        <p>The API key is yours, for your account, held in
+          <code>EncryptedSharedPreferences</code> behind a master key in the Android Keystore.
+          Text goes straight from your phone to the provider you chose.</p>
+        <p>There is no server in the middle, because there is no server at all.</p>
+      </article>
     </div>
   </div>
 </section>
